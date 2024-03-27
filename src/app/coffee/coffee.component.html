@@ -1,0 +1,46 @@
+<div class="container-background-image">
+  <img src="./assets/bg-cafe.jpg" alt="" class="content-bg-img" />
+</div>
+<div class="main-div">
+  <div class="coffee-container">
+    <div class="container-main-header">
+      <div class="container-title">Our Collection</div>
+      <div class="container-subtitle">
+        <p>
+          Introducing our Collection, a selection of unique coffees from
+          different roast types and origines, expertly roasted in small batches
+          and shipped fresh weekly.
+        </p>
+      </div>
+      <div class="container-CTAs">
+        <div class="container-cta-all-products">
+          <div
+            class="cta-all-products"
+            [ngClass]="{ isActive: active === 'All' }"
+            (click)="filterList('All')"
+          >
+            All Products
+          </div>
+        </div>
+        <div class="container-cta-available-products">
+          <div
+            class="cta-available-products"
+            [ngClass]="{ isActive: active === 'Available' }"
+            (click)="filterList('Available')"
+          >
+            Available now
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-list">
+      <card-coffee
+        *ngFor="let coffee of listShow"
+        [coffee]="coffee"
+        class="example-card"
+      >
+      </card-coffee>
+    </div>
+  </div>
+</div>

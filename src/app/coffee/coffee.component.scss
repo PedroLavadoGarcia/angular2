@@ -1,0 +1,90 @@
+.main-div {
+  display: flex;
+  justify-content: center;
+}
+
+.coffee-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4em 2em;
+  color: var(--text-color);
+  position: absolute;
+  z-index: 20;
+  top: 50px;
+  background: #1b1d1f;
+  width: 80%;
+  gap: 24px;
+  flex-direction: column;
+
+  .container-main-header {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+    .container-title {
+      color: white;
+      font-size: 2rem;
+      text-align: center;
+    }
+    .container-subtitle {
+      width: 70%;
+      color: #6f757c;
+      font-size: 16px;
+      text-align: center;
+    }
+  }
+}
+
+.container-background-image {
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+.content-bg-img {
+  width: 100%;
+}
+
+.container-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+@media (min-width: 768px) {
+  .container-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 150px 150px 150px;
+    column-gap: 30px;
+    row-gap: 150px;
+    margin: 10px 0;
+  }
+  .coffee-container {
+    top: 165px;
+  }
+}
+
+.container-CTAs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  color: #fef7ee;
+  font-size: 16px;
+
+  .container-cta-all-products,
+  .container-cta-available-products {
+    width: auto;
+    cursor: pointer;
+  }
+
+  .isActive {
+    background-color: #6f757c;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 800;
+  }
+}
