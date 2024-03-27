@@ -1,28 +1,56 @@
 <div class="card-translate">
   <div class="header-translate">
     <label id="example-radio-group-label">Detect Language</label>
-    <button mat-raised-button color="basic">English</button>
-    <button mat-raised-button color="basic">French</button>
-    <button mat-raised-button color="basic">Spanish</button>
+    <button
+      mat-raised-button
+      [color]="option === 'en' ? 'primary' : 'basic'"
+      (click)="changeOptionValue('en')"
+    >
+      English
+    </button>
+    <button
+      mat-raised-button
+      [color]="option === 'fr' ? 'primary' : 'basic'"
+      (click)="changeOptionValue('fr')"
+    >
+      French
+    </button>
+    <button
+      mat-raised-button
+      [color]="option === 'es' ? 'primary' : 'basic'"
+      (click)="changeOptionValue('es')"
+    >
+      Spanish
+    </button>
   </div>
 
   <mat-form-field appearance="fill">
-    <mat-label>Textarea</mat-label>
     <textarea
       matInput
       matTextareaAutosize
       style="resize: none"
       [(ngModel)]="value"
+      [disabled]="disabled"
     ></textarea>
   </mat-form-field>
 
   <div class="button-translate">
     <div>
-      <button mat-icon-button matTooltip="Basic" aria-label="Copy">
+      <button
+        mat-icon-button
+        matTooltip="Basic"
+        aria-label="Copy"
+        (click)="copyText()"
+      >
         <mat-icon>content_copy</mat-icon>
       </button>
     </div>
-    <button *ngIf="translated" mat-flat-button color="primary">
+    <button
+      *ngIf="translated"
+      mat-flat-button
+      color="primary"
+      (click)="translateText()"
+    >
       Translate
     </button>
   </div>
