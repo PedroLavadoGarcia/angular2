@@ -1,6 +1,6 @@
 <div class="card-translate">
   <div class="header-translate">
-    <label id="example-radio-group-label">Detect Language</label>
+    <label>{{ disabled ? "Translate to" : "Detect Language" }}</label>
     <button
       mat-raised-button
       [color]="option === 'en' ? 'primary' : 'basic'"
@@ -24,18 +24,24 @@
     </button>
   </div>
 
-  <mat-form-field appearance="fill">
-    <textarea
-      matInput
-      matTextareaAutosize
-      style="resize: none"
-      [(ngModel)]="value"
-      [disabled]="disabled"
-    ></textarea>
-  </mat-form-field>
+  <textarea
+    matInput
+    matTextareaAutosize
+    style="resize: none"
+    [(ngModel)]="value"
+    [disabled]="disabled"
+  ></textarea>
 
   <div class="button-translate">
     <div>
+      <button
+        mat-icon-button
+        matTooltip="Basic"
+        aria-label="Copy"
+        (click)="audioText()"
+      >
+        <mat-icon>volume_up</mat-icon>
+      </button>
       <button
         mat-icon-button
         matTooltip="Basic"
@@ -46,11 +52,13 @@
       </button>
     </div>
     <button
+      class="button-translate-size"
       *ngIf="translated"
       mat-flat-button
       color="primary"
       (click)="translateText()"
     >
+      <mat-icon>translate</mat-icon>
       Translate
     </button>
   </div>

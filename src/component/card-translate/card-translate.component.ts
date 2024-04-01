@@ -45,4 +45,11 @@ export class CardTranslateComponent {
   copyText() {
     navigator.clipboard.writeText(this.value);
   }
+
+  audioText() {
+    const synth = window.speechSynthesis;
+    const utterThis = new SpeechSynthesisUtterance(this.value);
+
+    synth.speak(utterThis);
+  }
 }

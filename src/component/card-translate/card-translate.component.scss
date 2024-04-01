@@ -22,7 +22,22 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    .button-translate-size {
+      height: 50px;
+      font-size: 20px;
+    }
   }
+}
+
+textarea {
+  min-height: 200px;
+  background-color: #212534;
+  color: white;
+  font-size: 16px;
+  border: initial;
+  padding-top: 10px;
+  border-top: 1px solid grey;
 }
 
 mat-form-field {
