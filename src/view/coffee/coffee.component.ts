@@ -15,7 +15,7 @@ import { tap } from "rxjs";
 })
 export class CoffeeComponent implements OnInit {
   constructor(private serviceCoffee: ServiceCoffeeService) {}
-  public active: string = "All";
+  public active: string = COFFEE_TYPE.ALL;
   private list: Coffee[] = [];
   public listShow: Coffee[] = [];
 
