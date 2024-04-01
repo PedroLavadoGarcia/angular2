@@ -1,10 +1,10 @@
-import { Routes } from '@angular/router';
-import { CoffeeComponent } from './coffee/coffee.component';
-import { HomeComponent } from './home/home.component';
-import { TranslateComponent } from './translate/translate.component';
+import { Routes } from "@angular/router";
+import { CoffeeComponent } from "../view/coffee/coffee.component";
+import { HomeComponent } from "../view/home/home.component";
+import { TranslateComponent } from "../view/translate/translate.component";
 
 export const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'coffee', component: CoffeeComponent },
-  { path: 'translate', component: TranslateComponent },
+  { path: "home", component: HomeComponent },
+  { path: "coffee", component: CoffeeComponent },
+  { path: "translate", component: TranslateComponent },
 ];

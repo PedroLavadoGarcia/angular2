@@ -6,7 +6,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatRadioModule } from "@angular/material/radio";
 import { MatButtonModule } from "@angular/material/button";
-import { CardTranslateComponent } from "../card-translate/card-translate.component";
+import { CardTranslateComponent } from "../../component/card-translate/card-translate.component";
 
 @Component({
   selector: "app-translate",

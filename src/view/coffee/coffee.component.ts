@@ -1,19 +1,19 @@
-import { CommonModule, NgClass } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { CardCoffeeComponent } from '../card-coffee/card-coffee.component';
-import { ServiceCoffeeService } from '../service-coffee.service';
-import { Coffee } from './coffee.model';
+import { CommonModule, NgClass } from "@angular/common";
+import { Component, OnInit } from "@angular/core";
+import { CardCoffeeComponent } from "../../component/card-coffee/card-coffee.component";
+import { ServiceCoffeeService } from "../../service/service-coffee.service";
+import { Coffee } from "../../model/coffee.model";
 
 @Component({
-  selector: 'app-coffe',
+  selector: "app-coffe",
   standalone: true,
   imports: [CardCoffeeComponent, CommonModule, NgClass],
-  templateUrl: './coffee.component.html',
-  styleUrl: './coffee.component.scss',
+  templateUrl: "./coffee.component.html",
+  styleUrl: "./coffee.component.scss",
 })
 export class CoffeeComponent implements OnInit {
   constructor(private serviceCoffee: ServiceCoffeeService) {}
-  active: string = 'All';
+  active: string = "All";
   list: Coffee[] = [];
   listShow: Coffee[] = [];
 
@@ -31,6 +31,6 @@ export class CoffeeComponent implements OnInit {
   filterList(filter: string) {
     this.active = filter;
     this.listShow =
-      filter === 'Available' ? this.list.filter((s) => s.available) : this.list;
+      filter === "Available" ? this.list.filter((s) => s.available) : this.list;
   }
 }
