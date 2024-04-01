@@ -30,14 +30,14 @@ export class CardTranslateComponent {
   @Input() disabled: boolean = false;
 
   @Output()
-  changeOption = new EventEmitter<string>();
+  changeOption = new EventEmitter<LANGUAGE_TYPE>();
 
   @Output()
   translate = new EventEmitter<string>();
 
   public LANGUAGE_TYPE = LANGUAGE_TYPE;
 
-  changeOptionValue(option: string) {
+  changeOptionValue(option: LANGUAGE_TYPE) {
     this.changeOption.emit(option);
   }
 

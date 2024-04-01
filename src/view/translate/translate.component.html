@@ -3,13 +3,13 @@
     [translated]="true"
     [option]="optionCard1"
     [value]="textCard1"
-    (changeOption)="changeOption(1, $event)"
+    (changeOption)="changeOption($event, 1)"
     (translate)="translateText($event)"
   ></app-card-translate>
   <app-card-translate
     [option]="optionCard2"
     [value]="textCard2"
-    (changeOption)="changeOption(2, $event)"
+    (changeOption)="changeOption($event, 2)"
     [disabled]="true"
   ></app-card-translate>
 </div>

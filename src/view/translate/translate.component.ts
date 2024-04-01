@@ -33,7 +33,7 @@ export class TranslateComponent {
   public textCard1 = "";
   public textCard2 = "";
 
-  changeOption(index: number, option: LANGUAGE_TYPE) {
+  changeOption(option: LANGUAGE_TYPE, index: number) {
     index === 1 ? (this.optionCard1 = option) : (this.optionCard2 = option);
   }
 
