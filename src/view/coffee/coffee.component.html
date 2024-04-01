@@ -16,7 +16,7 @@
         <div class="container-cta-all-products">
           <div
             class="cta-all-products"
-            [ngClass]="{ isActive: active === 'All' }"
+            [ngClass]="{ isActive: active === COFFEE_TYPE.ALL }"
             (click)="filterList('All')"
           >
             All Products
@@ -25,7 +25,7 @@
         <div class="container-cta-available-products">
           <div
             class="cta-available-products"
-            [ngClass]="{ isActive: active === 'Available' }"
+            [ngClass]="{ isActive: active === COFFEE_TYPE.AVAILABLE }"
             (click)="filterList('Available')"
           >
             Available now

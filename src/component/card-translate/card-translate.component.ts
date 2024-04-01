@@ -6,6 +6,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from "@angular/material/select";
 import { MatIconModule } from "@angular/material/icon";
+import { LANGUAGE_TYPE } from "../../common/constant";
 
 @Component({
   selector: "app-card-translate",
@@ -33,6 +34,8 @@ export class CardTranslateComponent {
 
   @Output()
   translate = new EventEmitter<string>();
+
+  public LANGUAGE_TYPE = LANGUAGE_TYPE;
 
   changeOptionValue(option: string) {
     this.changeOption.emit(option);

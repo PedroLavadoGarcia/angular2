@@ -12,5 +12,4 @@ import { Coffee } from "../../model/coffee.model";
 })
 export class CardCoffeeComponent {
   @Input() coffee!: Coffee;
-  value = "";
 }
