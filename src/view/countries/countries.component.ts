@@ -4,11 +4,12 @@ import { CountriesService } from "../../service/countries.service";
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
-import { MatSelectModule } from "@angular/material/select";
 import { CommonModule, NgClass } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCheckboxModule } from "@angular/material/checkbox";
+import { Sort, MatSortModule } from "@angular/material/sort";
+import { tap } from "rxjs";
 
 @Component({
   selector: "app-countries",
@@ -20,11 +21,11 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,
-    MatSelectModule,
     NgClass,
     FormsModule,
     MatButtonModule,
     MatCheckboxModule,
+    MatSortModule,
   ],
   templateUrl: "./countries.component.html",
   styleUrl: "./countries.component.scss",
@@ -36,24 +37,67 @@ export class CountriesComponent implements OnInit {
   public member = false;
   public independent = false;
   displayedColumns: string[] = ["flag", "name", "population", "area", "region"];
-  sortByList = [
-    { id: "population", itemName: "Population" },
-    { id: "name", itemName: "Name" },
-    { id: "area", itemName: "Area" },
-    { id: "region", itemName: "Region" },
+  sortedData = [];
+
+  public listRegion = [
+    "America",
+    "Asia",
+    "Europa",
+    "Africa",
+    "Oceania",
+    "Antarctic",
   ];
 
-  get listRegion() {
-    return ["America", "Asia", "Europa", "Africa", "Oceania", "Antarctic"];
-  }
+  public regionSelected = [
+    "America",
+    "Asia",
+    "Europa",
+    "Africa",
+    "Oceania",
+    "Antarctic",
+  ];
 
   async ngOnInit() {
     this.loadAllCountries();
   }
 
-  public loadAllCountries() {
-    this.CountriesService.getAllCountries().subscribe((response) => {
-      this.countriesList = response;
+  loadAllCountries() {
+    this.CountriesService.getAllCountries()
+      .pipe(tap((result) => (this.sortedData = result.slice())))
+      .subscribe((response) => {
+        this.countriesList = response;
+      });
+  }
+
+  sortByProperty() {
+    let countries = this.countriesList.sort();
+    this.countriesList = countries;
+  }
+
+  sortData(sort: Sort) {
+    const data = this.countriesList.slice();
+    if (!sort.active || sort.direction === "") {
+      this.sortedData = data;
+      return;
+    }
+
+    this.sortedData = data.sort((a: any, b: any) => {
+      const isAsc = sort.direction === "asc";
+      switch (sort.active) {
+        case "name":
+          return compare(a.name.official, b.name.official, isAsc);
+        case "population":
+          return compare(a.population, b.population, isAsc);
+        case "area":
+          return compare(a.area, b.area, isAsc);
+        case "region":
+          return compare(a.region, b.region, isAsc);
+        default:
+          return 0;
+      }
     });
   }
+}
+function compare(a: number | string, b: number | string, isAsc: boolean) {
+  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }

@@ -12,17 +12,12 @@
     </div>
     <div class="list-container">
       <div class="filter-table">
-        <div>Sort by:</div>
-        <mat-form-field>
-          <mat-select [(ngModel)]="sortBySelected">
-            <mat-option [value]="sort.id" *ngFor="let sort of sortByList">
-              {{ sort.itemName }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-
         <div>Region:</div>
-        <button *ngFor="let region of listRegion" mat-raised-button>
+        <button
+          *ngFor="let region of listRegion"
+          mat-raised-button
+          [color]="regionSelected.includes(region) ? 'primary' : 'basic'"
+        >
           {{ region }}
         </button>
 
@@ -37,10 +32,12 @@
       <div class="container-table">
         <table
           mat-table
-          [dataSource]="countriesList"
+          matSort
+          (matSortChange)="sortData($event)"
+          [dataSource]="sortedData"
           class="mat-elevation-z8 demo-table"
         >
-          <!-- Position Column -->
+          <!-- flag Column -->
           <ng-container matColumnDef="flag">
             <th mat-header-cell *matHeaderCellDef>Flag</th>
             <td mat-cell *matCellDef="let element" class="size-flag">
@@ -50,30 +47,33 @@
 
           <!-- Name Column -->
           <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>Name</th>
             <td mat-cell *matCellDef="let element">
               {{ element.name.official }}
             </td>
           </ng-container>
 
-          <!-- Weight Column -->
+          <!-- population Column -->
           <ng-container matColumnDef="population">
-            <th mat-header-cell *matHeaderCellDef>Population</th>
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>
+              Population
+            </th>
             <td mat-cell *matCellDef="let element">
               {{ element.population.toLocaleString("es-MX") }}
             </td>
           </ng-container>
 
-          <!-- Symbol Column -->
+          <!-- area Column -->
           <ng-container matColumnDef="area">
-            <th mat-header-cell *matHeaderCellDef>Area(Km²)</th>
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>Area(Km²)</th>
             <td mat-cell *matCellDef="let element">
               {{ element.area.toLocaleString("es-MX") }}
             </td>
           </ng-container>
 
+          <!-- region Column -->
           <ng-container matColumnDef="region">
-            <th mat-header-cell *matHeaderCellDef>Region</th>
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>Region</th>
             <td mat-cell *matCellDef="let element">{{ element.region }}</td>
           </ng-container>
 

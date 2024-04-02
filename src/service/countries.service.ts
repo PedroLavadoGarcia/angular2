@@ -10,7 +10,7 @@ export class CountriesService {
 
   public getAllCountries(): Observable<[]> {
     return this.http.get<[]>(
-      `https://restcountries.com/v3.1/all?fields=flag,name,population,area,region`
+      `https://restcountries.com/v3.1/all?fields=flag,name,population,area,region,independent,unMember,subregion`
     );
   }
 }
