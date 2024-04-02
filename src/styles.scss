@@ -9,3 +9,12 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: black;
 }
+
+.mdc-form-field > label {
+  color: white;
+  font-size: 16px;
+}
+
+.mdc-checkbox__background {
+  border-color: grey !important;
+}
