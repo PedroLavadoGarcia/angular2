@@ -3,7 +3,7 @@
 
   <div class="countries-list-container">
     <div class="header-countries">
-      <div>Found countries {{ countriesList.length }}</div>
+      <div>Found countries {{ sortedData.length }}</div>
       <mat-form-field>
         <mat-icon matPrefix>search</mat-icon>
         <mat-label>Search by Name, Region, SubRegion </mat-label>
@@ -17,15 +17,24 @@
           *ngFor="let region of listRegion"
           mat-raised-button
           [color]="regionSelected.includes(region) ? 'primary' : 'basic'"
+          (click)="filterCountry(region)"
         >
           {{ region }}
         </button>
 
         <div>Status:</div>
-        <mat-checkbox class="" color="primary" [(ngModel)]="member"
+        <mat-checkbox
+          class=""
+          color="primary"
+          [(ngModel)]="member"
+          (click)="filterList()"
           >Member of the United Nations</mat-checkbox
         >
-        <mat-checkbox class="" color="primary" [(ngModel)]="independent"
+        <mat-checkbox
+          class=""
+          color="primary"
+          [(ngModel)]="independent"
+          (click)="filterList()"
           >Independent</mat-checkbox
         >
       </div>

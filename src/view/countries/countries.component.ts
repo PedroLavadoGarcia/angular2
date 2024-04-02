@@ -10,6 +10,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { Sort, MatSortModule } from "@angular/material/sort";
 import { tap } from "rxjs";
+import { compare } from "../../common/function";
 
 @Component({
   selector: "app-countries",
@@ -33,25 +34,24 @@ import { tap } from "rxjs";
 export class CountriesComponent implements OnInit {
   constructor(private CountriesService: CountriesService) {}
   public countriesList = [];
-  public sortBySelected = "population";
   public member = false;
   public independent = false;
   displayedColumns: string[] = ["flag", "name", "population", "area", "region"];
   sortedData = [];
 
   public listRegion = [
-    "America",
+    "Americas",
     "Asia",
-    "Europa",
+    "Europe",
     "Africa",
     "Oceania",
     "Antarctic",
   ];
 
   public regionSelected = [
-    "America",
+    "Americas",
     "Asia",
-    "Europa",
+    "Europe",
     "Africa",
     "Oceania",
     "Antarctic",
@@ -69,13 +69,8 @@ export class CountriesComponent implements OnInit {
       });
   }
 
-  sortByProperty() {
-    let countries = this.countriesList.sort();
-    this.countriesList = countries;
-  }
-
   sortData(sort: Sort) {
-    const data = this.countriesList.slice();
+    const data = this.sortedData.slice();
     if (!sort.active || sort.direction === "") {
       this.sortedData = data;
       return;
@@ -97,7 +92,27 @@ export class CountriesComponent implements OnInit {
       }
     });
   }
-}
-function compare(a: number | string, b: number | string, isAsc: boolean) {
-  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+
+  filterList() {
+    this.sortedData = this.countriesList.filter((item: any) => {
+      let keep = true;
+      if (this.independent) {
+        keep = item.independent;
+      }
+      if (this.member) {
+        keep = item.unMember;
+      }
+      return keep && this.regionSelected.includes(item.region);
+    });
+  }
+
+  filterCountry(region: string) {
+    this.regionSelected.includes(region)
+      ? (this.regionSelected = this.regionSelected.filter(
+          (item) => item != region
+        ))
+      : this.regionSelected.push(region);
+
+    this.filterList();
+  }
 }
