@@ -11,6 +11,8 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
 import { Sort, MatSortModule } from "@angular/material/sort";
 import { tap } from "rxjs";
 import { compare } from "../../common/function";
+import { MatDialog } from "@angular/material/dialog";
+import { CountriesDialogComponent } from "../../component/countries-dialog/countries-dialog.component";
 
 @Component({
   selector: "app-countries",
@@ -32,7 +34,10 @@ import { compare } from "../../common/function";
   styleUrl: "./countries.component.scss",
 })
 export class CountriesComponent implements OnInit {
-  constructor(private CountriesService: CountriesService) {}
+  constructor(
+    private CountriesService: CountriesService,
+    public dialog: MatDialog
+  ) {}
   public countriesList = [];
   public member = false;
   public independent = false;
@@ -114,5 +119,21 @@ export class CountriesComponent implements OnInit {
       : this.regionSelected.push(region);
 
     this.filterList();
+  }
+
+  openDialog(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string,
+    country: any
+  ): void {
+    this.dialog.open(CountriesDialogComponent, {
+      width: "80%",
+      height: "90%",
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data: {
+        country: country,
+      },
+    });
   }
 }

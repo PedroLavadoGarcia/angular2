@@ -1,0 +1,48 @@
+<div mat-dialog-title>
+  <div>
+    <img
+      mat-card-image
+      [src]="data.country.flags.svg"
+      alt="Photo"
+      width="300px"
+    />
+  </div>
+  <div>{{ data.country.name.common }}</div>
+  <div>{{ data.country.name.official }}</div>
+</div>
+<div class="container-chips-dialog">
+  <div class="chip-dialog">
+    <label
+      >Population | {{ data.country.population.toLocaleString("es-MX") }}</label
+    >
+  </div>
+  <div class="chip-dialog">
+    <label>Area(Km²) | {{ data.country.area.toLocaleString("es-MX") }}</label>
+  </div>
+</div>
+<div class="info-dialog">
+  <div class="info-row-dialog">
+    <div>Capital</div>
+    <div>{{ data.country.capital }}</div>
+  </div>
+  <div class="info-row-dialog">
+    <div>SubRegion</div>
+    <div>{{ data.country.subregion }}</div>
+  </div>
+  <div class="info-row-dialog">
+    <div>Language</div>
+    <div>{{ languages }}</div>
+  </div>
+  <div class="info-row-dialog">
+    <div>Currencies</div>
+    <div>{{ currencies }}</div>
+  </div>
+  <div class="info-row-dialog">
+    <div>Continents</div>
+    <div>{{ data.country.continents.toString() }}</div>
+  </div>
+  <!-- <div class="info-row-dialog">
+    <div>Neighbouring Countries</div>
+    <div>{{ data.country.countries }}</div>
+  </div> -->
+</div>
