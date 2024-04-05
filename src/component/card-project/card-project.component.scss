@@ -1,0 +1,134 @@
+.container-label {
+  z-index: 99;
+  position: absolute;
+  margin: 10px 10px 0;
+  padding: 0 10px;
+  background: #f6c768;
+  border-radius: 10px;
+
+  p.label {
+    font-size: 10px;
+    color: #1b1d1f;
+    font-weight: 600;
+    margin: 5px;
+    font-size: 16px;
+  }
+}
+
+.container-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 5px 0;
+  color: white;
+  background-color: #1b1d1f;
+  font-size: 18px;
+
+  .container-detail-row-1 {
+    display: flex;
+    justify-content: space-between;
+    gap: 65px;
+  }
+
+  .container-detail-row-2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    span.rates-and-votes {
+      display: flex;
+      align-items: center;
+    }
+
+    .available {
+      color: #ed735d;
+      font-weight: bold;
+    }
+  }
+
+  .container-price {
+    padding: 0 10px;
+    background-color: #bee3cc;
+    color: #1b1d1f;
+    border-radius: 5px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    height: 25px;
+    font-size: 18px;
+  }
+
+  p.name {
+    font-weight: 500;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  p.price {
+    text-align: center;
+    font-weight: 800;
+    font-size: 13px;
+    margin: 0 11px;
+  }
+}
+
+.mdc-button {
+  border-radius: 25px;
+}
+
+.card-translate {
+  padding: 20px;
+  background-color: #212534;
+  color: white;
+  border: solid 1px black;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-radius: 25px;
+
+  .header-translate {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+  }
+  .button-translate {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .button-translate-size {
+      height: 50px;
+      font-size: 20px;
+    }
+  }
+}
+
+textarea {
+  min-height: 200px;
+  background-color: #212534;
+  color: white;
+  font-size: 16px;
+  border: initial;
+  padding-top: 10px;
+  border-top: 1px solid grey;
+}
+
+mat-form-field {
+  width: 100%;
+  min-height: 200px;
+}
+.mat-form-field.fill-container,
+.mat-form-field.fill-container .mat-form-field-infix,
+.mat-form-field.fill-container .mat-form-field-flex,
+.mat-form-field.fill-container .mat-form-field-wrapper {
+  height: 100%;
+  width: 100%;
+}
+
+.mat-form-field.fill-container textarea {
+  height: calc(100% - 25px);
+}
+.mdc-label {
+  color: white;
+}

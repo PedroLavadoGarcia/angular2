@@ -3,21 +3,21 @@
     <label>{{ disabled ? "Translate to" : "Detect Language" }}</label>
     <button
       mat-raised-button
-      [color]="option === LANGUAGE_TYPE.EN ? 'primary' : 'basic'"
+      [color]="optionTranslate === LANGUAGE_TYPE.EN ? 'primary' : 'basic'"
       (click)="changeOptionValue(LANGUAGE_TYPE.EN)"
     >
       English
     </button>
     <button
       mat-raised-button
-      [color]="option === LANGUAGE_TYPE.FR ? 'primary' : 'basic'"
+      [color]="optionTranslate === LANGUAGE_TYPE.FR ? 'primary' : 'basic'"
       (click)="changeOptionValue(LANGUAGE_TYPE.FR)"
     >
       French
     </button>
     <button
       mat-raised-button
-      [color]="option === LANGUAGE_TYPE.ES ? 'primary' : 'basic'"
+      [color]="optionTranslate === LANGUAGE_TYPE.ES ? 'primary' : 'basic'"
       (click)="changeOptionValue(LANGUAGE_TYPE.ES)"
     >
       Spanish

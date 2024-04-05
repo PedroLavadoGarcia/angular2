@@ -1,15 +1,15 @@
 import { CommonModule, NgClass } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
-import { CardCoffeeComponent } from "../../component/card-coffee/card-coffee.component";
 import { ServiceCoffeeService } from "../../service/service-coffee.service";
 import { Coffee } from "../../model/coffee.model";
 import { COFFEE_TYPE } from "../../common/constant";
 import { tap } from "rxjs";
+import { CardProjectComponent } from "../../component/card-project/card-project.component";
 
 @Component({
   selector: "app-coffe",
   standalone: true,
-  imports: [CardCoffeeComponent, CommonModule, NgClass],
+  imports: [CardProjectComponent, CommonModule, NgClass],
   templateUrl: "./coffee.component.html",
   styleUrl: "./coffee.component.scss",
 })

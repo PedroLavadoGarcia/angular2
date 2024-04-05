@@ -1,15 +1,15 @@
 <div class="translate-container">
-  <app-card-translate
+  <app-card-project
     [translated]="true"
-    [option]="optionCard1"
+    [optionTranslate]="optionCard1"
     [value]="textCard1"
     (changeOption)="changeOption($event, 1)"
     (translate)="translateText($event)"
-  ></app-card-translate>
-  <app-card-translate
-    [option]="optionCard2"
+  ></app-card-project>
+  <app-card-project
+    [optionTranslate]="optionCard2"
     [value]="textCard2"
     (changeOption)="changeOption($event, 2)"
     [disabled]="true"
-  ></app-card-translate>
+  ></app-card-project>
 </div>

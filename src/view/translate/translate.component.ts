@@ -6,9 +6,9 @@ import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatRadioModule } from "@angular/material/radio";
 import { MatButtonModule } from "@angular/material/button";
-import { CardTranslateComponent } from "../../component/card-translate/card-translate.component";
 import { ServiceTranslateService } from "../../service/service-translate.service";
 import { LANGUAGE_TYPE } from "../../common/constant";
+import { CardProjectComponent } from "../../component/card-project/card-project.component";
 
 @Component({
   selector: "app-translate",
@@ -21,7 +21,7 @@ import { LANGUAGE_TYPE } from "../../common/constant";
     MatFormFieldModule,
     MatRadioModule,
     MatButtonModule,
-    CardTranslateComponent,
+    CardProjectComponent,
   ],
   templateUrl: "./translate.component.html",
   styleUrl: "./translate.component.scss",

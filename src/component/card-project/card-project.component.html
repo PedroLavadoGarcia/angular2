@@ -1,0 +1,97 @@
+<ng-template [ngIf]="coffee">
+  <mat-card class="example-card">
+    <div *ngIf="coffee.popular" class="container-label">
+      <p class="label">Popular</p>
+    </div>
+    <img mat-card-image [src]="coffee.image" width="100%" height="200" />
+    <div class="container-details">
+      <div class="container-detail-row-1">
+        <div class="container-name">
+          <p class="name">{{ coffee.name }}</p>
+        </div>
+        <div class="container-price">
+          <p class="price">{{ coffee.price }}</p>
+        </div>
+      </div>
+      <div class="container-detail-row-2">
+        <div>
+          <span class="rates-and-votes"
+            ><img src="./assets/Star_fill.svg" alt="Star Fill" />
+            {{ coffee.rating }}({{ coffee.votes }} votes)</span
+          >
+        </div>
+        <div *ngIf="!coffee.available">
+          <span class="available">Sold out</span>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</ng-template>
+
+<ng-template [ngIf]="optionTranslate">
+  <div class="card-translate">
+    <div class="header-translate">
+      <label>{{ disabled ? "Translate to" : "Detect Language" }}</label>
+      <button
+        mat-raised-button
+        [color]="optionTranslate === LANGUAGE_TYPE.EN ? 'primary' : 'basic'"
+        (click)="changeOptionValue(LANGUAGE_TYPE.EN)"
+      >
+        English
+      </button>
+      <button
+        mat-raised-button
+        [color]="optionTranslate === LANGUAGE_TYPE.FR ? 'primary' : 'basic'"
+        (click)="changeOptionValue(LANGUAGE_TYPE.FR)"
+      >
+        French
+      </button>
+      <button
+        mat-raised-button
+        [color]="optionTranslate === LANGUAGE_TYPE.ES ? 'primary' : 'basic'"
+        (click)="changeOptionValue(LANGUAGE_TYPE.ES)"
+      >
+        Spanish
+      </button>
+    </div>
+
+    <textarea
+      matInput
+      matTextareaAutosize
+      style="resize: none"
+      [(ngModel)]="value"
+      [disabled]="disabled"
+    ></textarea>
+
+    <div class="button-translate">
+      <div>
+        <button
+          mat-icon-button
+          matTooltip="Basic"
+          aria-label="Copy"
+          (click)="audioText()"
+        >
+          <mat-icon>volume_up</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          matTooltip="Basic"
+          aria-label="Copy"
+          (click)="copyText()"
+        >
+          <mat-icon>content_copy</mat-icon>
+        </button>
+      </div>
+      <button
+        class="button-translate-size"
+        *ngIf="translated"
+        mat-flat-button
+        color="primary"
+        (click)="translateText()"
+      >
+        <mat-icon>translate</mat-icon>
+        Translate
+      </button>
+    </div>
+  </div>
+</ng-template>

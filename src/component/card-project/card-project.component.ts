@@ -2,16 +2,22 @@ import { CommonModule } from "@angular/common";
 import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
+import { MatCardModule } from "@angular/material/card";
 import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from "@angular/material/select";
-import { MatIconModule } from "@angular/material/icon";
 import { LANGUAGE_TYPE } from "../../common/constant";
+import { Coffee } from "../../model/coffee.model";
+import { CardCoffeeComponent } from "../card-coffee/card-coffee.component";
+import { CardTranslateComponent } from "../card-translate/card-translate.component";
 
 @Component({
-  selector: "app-card-translate",
+  selector: "app-card-project",
   standalone: true,
   imports: [
+    CardCoffeeComponent,
+    CardTranslateComponent,
     CommonModule,
     FormsModule,
     MatSelectModule,
@@ -19,13 +25,15 @@ import { LANGUAGE_TYPE } from "../../common/constant";
     MatFormFieldModule,
     MatButtonModule,
     MatIconModule,
+    MatCardModule,
   ],
-  templateUrl: "./card-translate.component.html",
-  styleUrl: "./card-translate.component.scss",
+  templateUrl: "./card-project.component.html",
+  styleUrl: "./card-project.component.scss",
 })
-export class CardTranslateComponent {
+export class CardProjectComponent {
+  @Input() coffee!: Coffee;
   @Input() translated: boolean = false;
-  @Input() optionTranslate: string = "";
+  @Input() optionTranslate!: string;
   @Input() value: string = "";
   @Input() disabled: boolean = false;
 
