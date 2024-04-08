@@ -24,10 +24,10 @@ import { CountriesDialogComponent } from "../countries-dialog/countries-dialog.c
     MatFormFieldModule,
     MatIconModule,
     NgClass,
-    FormsModule,
     MatButtonModule,
     MatCheckboxModule,
     MatSortModule,
+    FormsModule,
   ],
   templateUrl: "./table-country.component.html",
   styleUrl: "./table-country.component.scss",
@@ -91,20 +91,11 @@ export class TableCountryComponent implements OnInit {
       return;
     }
 
-    this.sortedData = data.sort((a: any, b: any) => {
+    this.sortedData = data.sort((value: any, nextValue: any) => {
       const isAsc = sort.direction === "asc";
-      switch (sort.active) {
-        case "name":
-          return compare(a.name.official, b.name.official, isAsc);
-        case "population":
-          return compare(a.population, b.population, isAsc);
-        case "area":
-          return compare(a.area, b.area, isAsc);
-        case "region":
-          return compare(a.region, b.region, isAsc);
-        default:
-          return 0;
-      }
+      return sort.active === "name"
+        ? compare(value.name.official, nextValue.name.official, isAsc)
+        : compare(value[sort.active], nextValue[sort.active], isAsc);
     });
   }
 
